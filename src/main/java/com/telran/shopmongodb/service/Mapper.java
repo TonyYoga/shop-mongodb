@@ -5,12 +5,13 @@ import com.telran.shopmongodb.data.entity.*;
 import com.telran.shopmongodb.data.projection.ProductStatistics;
 import com.telran.shopmongodb.data.projection.UserStatistics;
 
+import java.util.List;
+
 import static java.util.stream.Collectors.toList;
 
 public class Mapper {
-    public static UserDto map(UserEntity entity) {
+    public static UserDto map(UserProfile entity) {
         return UserDto.builder()
-                .email(entity.getEmail())
                 .name(entity.getName())
                 .phone(entity.getPhone())
                 .balance(entity.getBalance())
@@ -28,14 +29,13 @@ public class Mapper {
 
     public static CategoryDto map(CategoryEntity entity) {
         return CategoryDto.builder()
-                .id(entity.getId())
                 .name(entity.getName())
                 .build();
     }
 
-    public static ShoppingCartDto map(ShoppingCartEntity entity) {
+    public static ShoppingCartDto map(List<ProductOrder> shoppingCart) {
         return ShoppingCartDto.builder()
-                .products(entity.getProducts()
+                .products(shoppingCart
                         .stream()
                         .map(Mapper::map)
                         .collect(toList())
@@ -43,7 +43,7 @@ public class Mapper {
                 .build();
     }
 
-    public static ProductOrderDto map(ProductOrderEntity entity) {
+    public static ProductOrderDto map(ProductOrder entity) {
         return ProductOrderDto.builder()
                 .product(ProductDto.builder()
                         .id(entity.getProductId())

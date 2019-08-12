@@ -21,12 +21,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity entity = repository.findById(username).orElse(null);
-        if (entity == null) {
-            throw new UsernameNotFoundException(String.format("User with name: %s doesn't exist!", username));
-        }
+        UserEntity entity = repository.findById(username)
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with name: %s doesn't exist!", username)));
         String[] roles = entity.getRoles().stream().map(RoleStatus::name)
                 .toArray(String[]::new);
+
         return User.builder()
                 .username(entity.getEmail())
                 .password(entity.getPassword())
