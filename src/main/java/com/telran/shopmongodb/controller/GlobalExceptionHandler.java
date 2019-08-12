@@ -1,7 +1,7 @@
 package com.telran.shopmongodb.controller;
 
-import com.telran.telranshopspringdata.service.exceptions.NotFoundServiceException;
-import com.telran.telranshopspringdata.service.exceptions.ServiceException;
+import com.telran.shopmongodb.service.exceptions.NotFoundServiceException;
+import com.telran.shopmongodb.service.exceptions.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,8 +1,8 @@
 package com.telran.shopmongodb.controller;
 
 
-import com.telran.telranshopspringdata.controller.dto.*;
-import com.telran.telranshopspringdata.service.UserService;
+import com.telran.shopmongodb.controller.dto.*;
+import com.telran.shopmongodb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

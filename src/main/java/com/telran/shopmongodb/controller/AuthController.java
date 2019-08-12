@@ -1,7 +1,7 @@
 package com.telran.shopmongodb.controller;
 
-import com.telran.telranshopspringdata.controller.dto.AuthDto;
-import com.telran.telranshopspringdata.service.AuthService;
+import com.telran.shopmongodb.controller.dto.AuthDto;
+import com.telran.shopmongodb.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
