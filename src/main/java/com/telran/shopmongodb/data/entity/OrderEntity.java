@@ -4,8 +4,10 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
+
+//import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -16,7 +18,8 @@ import java.util.List;
 public class OrderEntity {
     @Id
     private String id;
-    private Timestamp date;
+//    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
+    private LocalDateTime date;
     private OrderStatus status;
     private String ownerEmail;
     private List<ProductOrder> products;

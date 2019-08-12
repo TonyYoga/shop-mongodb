@@ -35,7 +35,7 @@ POST http://localhost:8080/cart/
 Authorization: Basic sofa@mail.com 12345.com
 Content-Type: application/json
 
-{"productId":"5d5165c58a22c87f46059ac8","count":1}
+{"productId":"5d5165cc8a22c87f46059ac9","count":1}
 
 ###
 

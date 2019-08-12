@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -144,6 +143,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<OrderDto> getOrders(String userEmail) {
+        orderRepository.findByOwnerEmail(userEmail);
         return orderRepository.findByOwnerEmail(userEmail).stream()
                 .map(Mapper::map)
                 .collect(toList());
@@ -156,7 +156,7 @@ public class UserServiceImpl implements UserService {
         if (user.getProfile() == null) {
             throw new NotFoundServiceException(String.format("Profile %s not full", userEmail));
         }
-        var products = user.getProfile().getShoppingCart();
+        var products = new ArrayList<>(user.getProfile().getShoppingCart());
         BigDecimal totalCost = products.stream()
                 .map(prod -> prod.getPrice().multiply(BigDecimal.valueOf(prod.getCount())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
@@ -165,14 +165,14 @@ public class UserServiceImpl implements UserService {
         }
         user.getProfile().setBalance(user.getProfile().getBalance().subtract(totalCost));
 
-        OrderEntity order = orderRepository.save(OrderEntity.builder()
-                .date(Timestamp.valueOf(LocalDateTime.now()))
+        var res = orderRepository.save(OrderEntity.builder()
+                .date(LocalDateTime.now())
                 .ownerEmail(user.getEmail())
                 .status(OrderStatus.DONE)
                 .products(products)
                 .build());
         sce.clear();
         userRepository.save(user);
-        return Optional.of(map(order));
+        return Optional.of(map(res));
     }
 }

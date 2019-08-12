@@ -57,7 +57,7 @@ public class Mapper {
 
     public static OrderDto map(OrderEntity entity) {
         return OrderDto.builder()
-                .date(entity.getDate().toLocalDateTime())
+                .date(entity.getDate())
                 .id(entity.getId())
                 .products(entity.getProducts()
                         .stream()
