@@ -1,0 +1,70 @@
+###Registartion
+POST http://localhost:8080/registration
+Content-Type: application/json
+
+{"email":"sofa@mail.com","password":"12345.com"}
+
+### Add user profile
+
+POST http://localhost:8080/user
+Authorization: Basic sofa@mail.com 12345.com
+Content-Type: application/json
+
+{"email": "sofa@mail.com","name": "Sofa Do","phone": "0551112234"}
+
+###
+
+### GetUser Profile
+GET http://localhost:8080/user
+Authorization: Basic sofa@mail.com 12345.com
+
+###
+
+### Get all categories
+GET http://localhost:8080/categories
+
+###
+
+### Get all products
+GET http://localhost:8080/products
+
+###
+
+### Add Product to cart
+POST http://localhost:8080/cart/
+Authorization: Basic sofa@mail.com 12345.com
+Content-Type: application/json
+
+{"productId":"5d5165c58a22c87f46059ac8","count":1}
+
+###
+
+### Get User Shopping cart
+GET http://localhost:8080/cart
+Authorization: Basic sofa@mail.com 12345.com
+
+###
+
+### Remove Product from cart
+DELETE http://localhost:8080/cart/5d5165c58a22c87f46059ac8/1
+Authorization: Basic sofa@mail.com 12345.com
+
+###
+
+### Clear cart
+DELETE http://localhost:8080/cart/all
+Authorization: Basic sofa@mail.com 12345.com
+
+###
+
+### Checkout User Shopping cart
+GET http://localhost:8080/checkout
+Authorization: Basic sofa@mail.com 12345.com
+
+###
+
+### Get User orders
+GET http://localhost:8080/orders
+Authorization: Basic sofa@mail.com 12345.com
+
+###
