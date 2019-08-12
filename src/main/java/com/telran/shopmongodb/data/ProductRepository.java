@@ -6,6 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.stream.Stream;
 
 public interface ProductRepository extends MongoRepository<ProductEntity, String> {
-    Stream<ProductEntity> findAllByCategory_Id(String category);
+    Stream<ProductEntity> findAllByCategory(String category);
     Stream<ProductEntity> findBy();
 }

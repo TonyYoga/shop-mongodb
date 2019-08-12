@@ -18,6 +18,6 @@ public class OrderEntity {
     private String id;
     private Timestamp date;
     private OrderStatus status;
-    private UserProfile owner;
+    private String ownerEmail;
     private List<ProductOrder> products;
 }

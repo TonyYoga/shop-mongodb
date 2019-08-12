@@ -15,5 +15,4 @@ public class UserProfile {
     private String phone;
     private BigDecimal balance;
     private List<ProductOrder> shoppingCart;
-    private List<OrderEntity> orders;
 }

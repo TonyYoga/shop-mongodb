@@ -14,5 +14,4 @@ import java.util.List;
 public class ShoppingCart {
     private Timestamp date;
     private List<ProductOrder> products;
-    private UserProfile owner;
 }
