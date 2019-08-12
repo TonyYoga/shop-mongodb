@@ -1,8 +1,8 @@
 package com.telran.shopmongodb.service;
 
-import com.telran.shopmongodb.data.UserDetailsRepository;
-import com.telran.shopmongodb.data.entity.UserDetailsEntity;
-import com.telran.shopmongodb.data.entity.UserRoleEntity;
+import com.telran.shopmongodb.data.UserRepository;
+import com.telran.shopmongodb.data.entity.RoleStatus;
+import com.telran.shopmongodb.data.entity.UserEntity;
 import com.telran.shopmongodb.service.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,7 +16,7 @@ import java.util.List;
 public class AuthServiceImpl implements AuthService {
 
     @Autowired
-    UserDetailsRepository repository;
+    UserRepository repository;
     @Autowired
     PasswordEncoder encoder;
     @Override
@@ -24,12 +24,10 @@ public class AuthServiceImpl implements AuthService {
         if (repository.existsById(email)) {
             throw new ServiceException("User already exist!");
         }
-        UserDetailsEntity entity = UserDetailsEntity.builder()
+        UserEntity entity = UserEntity.builder()
                 .email(email)
                 .password(encoder.encode(password))
-                .roles(List.of(UserRoleEntity.builder()
-                        .role("ROLE_USER")
-                        .build())
+                .roles(List.of(RoleStatus.ROLE_USER)
                 ).build();
         repository.save(entity);
     }

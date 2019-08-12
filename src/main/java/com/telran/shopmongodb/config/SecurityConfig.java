@@ -1,7 +1,7 @@
 package com.telran.shopmongodb.config;
 
-import com.telran.telranshopspringdata.data.UserDetailsRepository;
-import com.telran.telranshopspringdata.service.CustomUserDetailsService;
+import com.telran.shopmongodb.data.UserRepository;
+import com.telran.shopmongodb.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig {
     @Autowired
-    UserDetailsRepository repository;
+    UserRepository repository;
 
     @Bean
     public UserDetailsService userDetailsService() {
