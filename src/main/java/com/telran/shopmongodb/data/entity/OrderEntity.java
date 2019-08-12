@@ -1,9 +1,9 @@
 package com.telran.shopmongodb.data.entity;
 
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -12,22 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-@Table(name = "orders")
+@Document(collection = "orders")
 public class OrderEntity {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
     private String id;
     private Timestamp date;
-    @Enumerated(value = EnumType.STRING)
     private OrderStatus status;
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private UserEntity owner;
-    @OneToMany(mappedBy = "order")
-    private List<ProductOrderEntity> products;
+    private UserProfile owner;
+    private List<ProductOrder> products;
 }
