@@ -2,6 +2,7 @@ package com.telran.shopmongodb.data.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -18,9 +19,9 @@ import java.util.List;
 public class OrderEntity {
     @Id
     private String id;
-//    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
     private LocalDateTime date;
     private OrderStatus status;
+    @Indexed()
     private String ownerEmail;
     private List<ProductOrder> products;
 }
