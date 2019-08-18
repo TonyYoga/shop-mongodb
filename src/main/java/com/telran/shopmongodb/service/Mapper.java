@@ -2,8 +2,8 @@ package com.telran.shopmongodb.service;
 
 import com.telran.shopmongodb.controller.dto.*;
 import com.telran.shopmongodb.data.entity.*;
-import com.telran.shopmongodb.data.projection.ProductStatistics;
-import com.telran.shopmongodb.data.projection.UserStatistics;
+import com.telran.shopmongodb.data.projection.ProductStatistic;
+import com.telran.shopmongodb.data.projection.UserStatistic;
 
 import java.util.List;
 
@@ -67,7 +67,7 @@ public class Mapper {
                 .build();
     }
 
-    static ProductStatisticDto map(ProductStatistics statistics) {
+    static ProductStatisticDto map(ProductStatistic statistics) {
         return ProductStatisticDto.builder()
                 .productName(statistics.getProductName())
                 .productCategory(statistics.getProductCategory())
@@ -76,11 +76,12 @@ public class Mapper {
                 .build();
     }
 
-    static UserStatisticDto map(UserStatistics statistics) {
+    static UserStatisticDto map(UserStatistic statistics) {
         return UserStatisticDto.builder()
                 .userEmail(statistics.getUserEmail())
                 .totalAmount(statistics.getTotalAmount())
                 .totalProductsCount(statistics.getTotalProductsCount())
+                .products(statistics.getProductList().stream().map(Mapper::map).collect(toList()))
                 .build();
     }
 }

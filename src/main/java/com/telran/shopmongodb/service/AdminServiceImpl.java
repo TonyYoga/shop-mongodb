@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @Service
 public class AdminServiceImpl implements AdminService {
     @Autowired
@@ -107,36 +109,23 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<ProductStatisticDto> getMostPopularProduct() {
-        //TODO
-        return null; //productOrderRepository.getPopularProductStatistics().map(Mapper::map).collect(toList());
+        return orderRepository.getPopularProductStatistics().map(Mapper::map).collect(toList());
     }
 
     @Override
     public List<ProductStatisticDto> getMostProfitableProduct() {
-        //TODO
-        return null; //productOrderRepository.getProfitableProductStatistics().map(Mapper::map).collect(toList());
+        return orderRepository.getProfitableProductStatistics().map(Mapper::map).collect(toList());
     }
 
     @Override
     public List<UserStatisticDto> getMostActiveUser() {
-        //TODO
-//        List<UserStatisticDto> resStat = orderRepository.getMostActiveUser().map(Mapper::map).collect(toList());
-//        resStat.forEach(stat -> stat.setProducts(
-//                productOrderRepository.findByOrder_Owner_Email(stat.getUserEmail())
-//                        .map(Mapper::map)
-//                        .collect(Collectors.toList())));
-//        return resStat;
-        return null;
+        List<UserStatisticDto> resStat = orderRepository.getMostActiveUser().map(Mapper::map).collect(toList());
+        return resStat;
     }
 
     @Override
     public List<UserStatisticDto> getMostProfitableUser() {
-        //TODO
-//        List<UserStatisticDto> resStat = orderRepository.getMostProfitableUser().map(Mapper::map).collect(toList());
-//        resStat.forEach(stat -> stat.setProducts(
-//                productOrderRepository.findByOrder_Owner_Email(stat.getUserEmail())
-//                        .map(Mapper::map)
-//                        .collect(Collectors.toList())));
-        return null;
+        List<UserStatisticDto> resStat = orderRepository.getMostProfitableUser().map(Mapper::map).collect(toList());
+        return resStat;
     }
 }
