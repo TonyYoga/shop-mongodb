@@ -2,21 +2,22 @@
 POST http://localhost:8080/registration
 Content-Type: application/json
 
-{"email":"sofa@mail.com","password":"12345.com"}
+{"email":"john@mail.com","password":"12345.com"}
 
 ### Add user profile
 
 POST http://localhost:8080/user
-Authorization: Basic sofa@mail.com 12345.com
+Authorization: Basic john@mail.com 12345.com
 Content-Type: application/json
 
-{"email": "sofa@mail.com","name": "Sofa Do","phone": "0551112234"}
+{"email": "john@mail.com","name": "John Do","phone": "0551112236"}
 
 ###
 
 ### GetUser Profile
 GET http://localhost:8080/user
-Authorization: Basic sofa@mail.com 12345.com
+Authorization: Basic john@mail.com 12345.com
+
 
 ###
 
@@ -32,10 +33,10 @@ GET http://localhost:8080/products
 
 ### Add Product to cart
 POST http://localhost:8080/cart/
-Authorization: Basic sofa@mail.com 12345.com
+Authorization: Basic john@mail.com 12345.com
 Content-Type: application/json
 
-{"productId":"5d5165cc8a22c87f46059ac9","count":1}
+{"productId":"5d5165eb8a22c87f46059acb","count":2}
 
 ###
 
@@ -59,7 +60,7 @@ Authorization: Basic sofa@mail.com 12345.com
 
 ### Checkout User Shopping cart
 GET http://localhost:8080/checkout
-Authorization: Basic sofa@mail.com 12345.com
+Authorization: Basic john@mail.com 12345.com
 
 ###
 

@@ -148,7 +148,7 @@ PUT http://localhost:8080/admin/user
 Authorization: Basic admin@mail.com 12345.com
 Content-Type: application/json
 
-{"userId":"sofa@mail.com", "balance":10000.00}
+{"userId":"john@mail.com", "balance":100000.00}
 ###
 
 ### Get Statistics
